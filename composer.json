@@ -1,0 +1,44 @@
+{
+    "name": "codingmatters/expressive-error-handler",
+    "type": "project",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Gab Amba",
+            "homepage": "http://www.gabbydgab.com/",
+            "email": "gamba@gabbydgab.com"
+        }
+    ],
+    "require": {
+        "php": "~7.0.0"
+    },
+    "require-dev": {
+        "squizlabs/php_codesniffer": "^2.6.2",
+        "sebastian/phpcpd": "^2.0.4",
+        "phpunit/phpunit": "^5.6"
+    },
+    "autoload": {
+        "psr-4": {
+            "CodingMatters\\ExpressiveErrorHandler\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "CodingMattersTest\\ExpressiveErrorHandler\\": "test/"
+        }
+    },
+    "scripts": {
+        "post-update-cmd": [
+            "@debug"
+        ],
+        "debug": [
+            "@cs",
+            "@cpd",
+            "@test"
+        ],
+        "cs": "phpcs --ignore=/vendor,/build src test",
+        "cs-fix": "phpcbf --ignore=/vendor,/build src test",
+        "cpd": "phpcpd --exclude=/vendor,/build --fuzzy src test",
+        "test": "phpunit --verbose"
+    }
+}
